@@ -17,66 +17,27 @@ require('./example')
 let turn = 'x'
 
 if (turn = 'x') {
-  document.write("It is X\'s turn!")
+  console.log("It is X\'s turn!")
 } else {
-  document.write("It is O\'s turn!")
+  console.log("It is O\'s turn!")
 }
 
 // Player-x clicks a box to place marker
 let boxes = [
-{
-  position: 0,
-  value: null,
-},
-{
-  position: 1,
-  value: null,
-},
-{
-  position: 2,
-  value: null,
-},
-{
-  position: 3,
-  value: null,
-},
-{
-  position: 4,
-  value: null,
-},
-{
-  position: 5,
-  value: null,
-},
-{
-  position: 6,
-  value: null,
-},
-{
-  position: 7,
-  value: null,
-},
-{
-  position: 8,
-  value: null,
-}
+  {position: 0, value: null},
+  {position: 1, value: null},
+  {position: 2, value: null},
+  {position: 3, value: null},
+  {position: 4, value: null},
+  {position: 5, value: null},
+  {position: 6, value: null},
+  {position: 7, value: null},
+  {position: 8, value: null}
 ]
 
 boxes[1].value = 'x'
 boxes[4].value = 'x'
 boxes[7].value = 'x'
-
-let placeMarker = function(position) {
-  if (turn = "x" && boxes[position].position === null) {
-    boxes[position].value = "x"
-    document.getElementById(position).innerHTML = "<img src='.assets/images/kitten1.png' width='60px'>"
-  } else if (turn = "o" && boxes[position].position === null) {
-    boxes[position].value = "x"
-    document.getElementById(position).innerHTML = "<img  src='.assets/images/kitten2.png' width='60px'>"
-  } else {
-    console.log('Please select an empty space')
-  }
-}
 
 // Marker appears in that space
 
@@ -89,30 +50,36 @@ const checkForWin = function () {
 }
 
 const checkHoriz = function (array) {
-  for (i = 0; i = 0 | 3 | 6; i += 3) {
-    if (boxes[i].value === boxes[i+1].value === boxes[i+2].value) {
+  for (i = 0; i < 7; i += 3) {
+    if (boxes[i].value === boxes[i+1].value && boxes[i].value === boxes[i+2].value) {
       console.log(turn + ' wins!')
     }
   }
 }
 
-const checkVert = function () {
+const checkVert3 = function () {
   for (i = 0; i < 3; i++) {
-  if (boxes[i].value === boxes[i+3].value === boxes[i+6].value) {
+  if (boxes[i].value !== null && boxes[i].value === boxes[i+3].value && boxes[i].value === boxes[i+6].value) {
       console.log(turn + ' wins!')
-    } else {
-      console.log('fail')
     }
-  }
+    else {
+    }
+}
 }
 
 const checkDiag = function () {
-  if (i=0 && boxes[0].value === boxes[4].value === boxes[8].value) {
+  if (i=0 && boxes[0].value === boxes[4].value && boxes[0].value === boxes[8].value) {
     console.log(turn + ' wins!')
-  } else if (i=2 && boxes[2].value === boxes[4].value === boxes[6].value) {
+  } else if (i = 2 && boxes[2].value === boxes[4].value && boxes[2] === boxes[6].value) {
     console.log(turn + ' wins!')
   }
 }
+
+const boardEvents = require('./games/events.js')
+
+$(document).ready(function () {
+  $('box').click(boardEvents.onPlaceMarker(this.id))
+})
 
 // Message that it is now O's turn
 
@@ -131,3 +98,11 @@ const checkDiag = function () {
 // Players can search for an existing game to continue
 
 // Game stored in incomplete or complete stage
+
+module.exports = {
+  turn,
+  boxes,
+  checkForWin,
+  boardEvents,
+  targetId
+}
