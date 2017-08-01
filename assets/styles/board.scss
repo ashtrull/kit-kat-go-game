@@ -1,0 +1,19 @@
+@import './colors';
+
+#grid-container {
+  text-align: center;
+  width: 600px;
+  & .box{
+    padding: 60px 50px;
+  }
+}
+
+.container {
+  text-align: center;
+  border:30px solid $secondary-color1;
+  background-color: $secondary-sub1;
+}
+
+.container .box {
+  border: 10px solid $complement-sub;
+}
