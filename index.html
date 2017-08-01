@@ -23,22 +23,41 @@
     </section>
     <section class="container" id="grid-container">
         <div class="row">
-          <div class="col-xs-4 box">Box 1</div>
-          <div class="col-xs-4 box">Box 2</div>
-          <div class="col-xs-4 box">Box 3</div>
+          <div class="col-xs-3 box" id="0">
+          </div>
+          <div class="col-xs-3 box" id="1">
+          </div>
+          <div class="col-xs-3 box" id="2">
+          </div>
         </div>
         <div class="row">
-          <div class="col-xs-4 box">Box 4</div>
-          <div class="col-xs-4 box">Box 5</div>
-          <div class="col-xs-4 box">Box 6</div>
+          <div class="col-xs-3 box" id="3">
+          </div>
+          <div class="col-xs-3 box" id="4">
+          </div>
+          <div class="col-xs-3 box" id="5">
+          </div>
         </div>
         <div class="row">
-          <div class="col-xs-4 box">Box 7</div>
-          <div class="col-xs-4 box">Box 8</div>
-          <div class="col-xs-4 box">Box 9</div>
+          <div class="col-xs-3 box" id="6">
+          </div>
+          <div class="col-xs-3 box" id="7">
+          </div>
+          <div class="col-xs-3 box" id="8">
+          </div>
         </div>
       </section>
-      <aside class="sidebar-right"></aside>
+      <div class="sidebar-right">
+        <h3> Create an Account </h3>
+      <form class="user-login">
+      <input name="credentials[email]" type="text" value="email" placeholder="Email">
+      <input name="credentials[password]" type="text" value="password" placeholder="Password">
+      <input name="credentials[password_confirmation]" type="password" value="password" placeholder="Re-enter Password">
+    </form>
+    <button type="submit" class="btn btn-default" id="create-button">Create Account</button>
+    Already have an account?
+    <button type="submit" class="btn btn-default">Sign In</button>
+  </div>
       <footer>Footer</footer>
     </body>
 </html>
