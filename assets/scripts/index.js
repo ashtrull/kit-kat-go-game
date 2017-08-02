@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const turn = require('./game/events.js')
+const gameEvents = require('./game/events.js')
 const boxes = require('./game/events.js')
 const boardEvents = require('./game/events.js')
 
@@ -23,38 +23,6 @@ require('./example')
 // Marker appears in that space
 
 // Game checks for win
-
-const checkForWin = function () {
-  checkHoriz()
-  checkVert()
-  checkDiag()
-}
-
-const checkHoriz = function () {
-  for (i = 0; i < 7; i += 3) {
-    if (boxes[i].value !== 0 && boxes[i].value === boxes[i+1].value && boxes[i].value === boxes[i+2].value) {
-      console.log(turn + ' wins!')
-    }
-  }
-}
-
-const checkVert = function () {
-  for (i = 0; i < 3; i++) {
-  if (boxes[i].value !== 0 && boxes[i].value === boxes[i+3].value && boxes[i].value === boxes[i+6].value) {
-      console.log(turn + ' wins!')
-    }
-    else {
-    }
-}
-}
-
-const checkDiag = function () {
-  if (i=0 && boxes[0].value !== 0 && boxes[0].value === boxes[4].value && boxes[0].value === boxes[8].value) {
-    console.log(turn + ' wins!')
-  } else if (i = 2 && boxes[0].value !== 0 && boxes[2].value === boxes[4].value && boxes[2] === boxes[6].value) {
-    console.log(turn + ' wins!')
-  }
-}
 
 $(() => {
   $(function () {
@@ -97,11 +65,7 @@ $(() => {
 // TODO Game stored in incomplete or complete stage
 
 module.exports = {
-  turn,
+  gameEvents,
   boxes,
-  checkForWin,
-  checkHoriz,
-  checkVert,
-  checkDiag,
   boardEvents
 }
