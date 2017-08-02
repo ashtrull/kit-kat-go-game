@@ -1,34 +1,44 @@
 @import './board';
+@import 'typography.scss';
 
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 .container-fluid {
-  background-color: mix($primary-color, white, 80%);
+  background-color: white;
 }
 
 .header-bar {
-  color:$secondary-color2;
+  color: $secondary-color1;
   font-size: 48px;
+  font-family: $titlefontfamily;
   text-align: center;
-  background-color: $secondary-color1;
+  background-color:$secondary-color2;
 }
 
 .navbar {
-  background-color: $secondary-color2;
-  color: $complement-sub;
+  background-color: $secondary-color1;
+  color: white;
   font-size: 24px;
+  font-family: $bodyfontfamily;
   margin: 0 auto;
   padding: 5px 15px;
   text-align: center;
 }
 
 .btn {
-  color: $complement-color;
+  color: white;
   background-color: $complement-sub;
+  font-family: $bodyfontfamily;
   font-size: 18px;
   margin: 10px;
   border: white;
   border-radius: 30%;
   padding: 15px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-family: $bodyfontfamily;
 }

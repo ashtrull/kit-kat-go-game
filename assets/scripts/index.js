@@ -2,6 +2,9 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const turn = require('./game/events.js')
+const boxes = require('./game/events.js')
+const boardEvents = require('./game/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -14,52 +17,30 @@ $(() => {
 require('./example')
 
 // Game identifies it is X's turn
-let turn = 'x'
-
-if (turn = 'x') {
-  console.log("It is X\'s turn!")
-} else {
-  console.log("It is O\'s turn!")
-}
 
 // Player-x clicks a box to place marker
-let boxes = [
-  {position: 0, value: null},
-  {position: 1, value: null},
-  {position: 2, value: null},
-  {position: 3, value: null},
-  {position: 4, value: null},
-  {position: 5, value: null},
-  {position: 6, value: null},
-  {position: 7, value: null},
-  {position: 8, value: null}
-]
-
-boxes[1].value = 'x'
-boxes[4].value = 'x'
-boxes[7].value = 'x'
 
 // Marker appears in that space
 
 // Game checks for win
 
 const checkForWin = function () {
-  checkHoriz
-  checkVert
-  checkDiag
+  checkHoriz()
+  checkVert()
+  checkDiag()
 }
 
-const checkHoriz = function (array) {
+const checkHoriz = function () {
   for (i = 0; i < 7; i += 3) {
-    if (boxes[i].value === boxes[i+1].value && boxes[i].value === boxes[i+2].value) {
+    if (boxes[i].value !== 0 && boxes[i].value === boxes[i+1].value && boxes[i].value === boxes[i+2].value) {
       console.log(turn + ' wins!')
     }
   }
 }
 
-const checkVert3 = function () {
+const checkVert = function () {
   for (i = 0; i < 3; i++) {
-  if (boxes[i].value !== null && boxes[i].value === boxes[i+3].value && boxes[i].value === boxes[i+6].value) {
+  if (boxes[i].value !== 0 && boxes[i].value === boxes[i+3].value && boxes[i].value === boxes[i+6].value) {
       console.log(turn + ' wins!')
     }
     else {
@@ -68,20 +49,36 @@ const checkVert3 = function () {
 }
 
 const checkDiag = function () {
-  if (i=0 && boxes[0].value === boxes[4].value && boxes[0].value === boxes[8].value) {
+  if (i=0 && boxes[0].value !== 0 && boxes[0].value === boxes[4].value && boxes[0].value === boxes[8].value) {
     console.log(turn + ' wins!')
-  } else if (i = 2 && boxes[2].value === boxes[4].value && boxes[2] === boxes[6].value) {
+  } else if (i = 2 && boxes[0].value !== 0 && boxes[2].value === boxes[4].value && boxes[2] === boxes[6].value) {
     console.log(turn + ' wins!')
   }
 }
 
-const boardEvents = require('./games/events.js')
-
-$(document).ready(function () {
-  $('box').click(boardEvents.onPlaceMarker(this.id))
+$(() => {
+  $(function () {
+    $('#grid-container').hide()
+    $('.start').hide()
+    $('#sign-in-button').hide()
+  })
+  $('#create-button').on('click', function () {
+    $('#sign-in-button').show()
+  })
+  $('#sign-in-button').on('click', function () {
+    $('.start').show()
+  })
+  $('.start').on('click', function () {
+    $('#grid-container').show()
+    $('#game-prompt').html('Xavier always starts!')
+  })
+  $('.game.box').on('click', function () {
+    boardEvents.onPlaceMarker(this.id)
+  })
 })
+//
 
-// Message that it is now O's turn
+// TODO Message that it is now O's turn
 
 // Player-o clicks a box to place marker
 
@@ -89,20 +86,22 @@ $(document).ready(function () {
 
 // Game checks for win or game over
 
-// Repeat until win logic is met OR until all spaces are full
+// TODO Repeat until win logic is met OR until all spaces are full
 
-// Message " __ wins! " or "Game over. Play again?"
+// TODO Message " __ wins! " or "Game over. Play again?"
 
-// If win, add 1 point to the game winner's score
+// TODO If win, add 1 point to the game winner's score
 
-// Players can search for an existing game to continue
+// TODO Players can search for an existing game to continue
 
-// Game stored in incomplete or complete stage
+// TODO Game stored in incomplete or complete stage
 
 module.exports = {
   turn,
   boxes,
   checkForWin,
-  boardEvents,
-  targetId
+  checkHoriz,
+  checkVert,
+  checkDiag,
+  boardEvents
 }
