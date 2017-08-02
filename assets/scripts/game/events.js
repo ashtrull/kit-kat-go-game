@@ -3,6 +3,8 @@
 const id = require('../index.js')
 const checkWin = require('../index.js')
 
+// TODO should i be creating an object "game"? need to track # of moves to register game over
+
 let turn = 'X'
 
 if (turn === 'X') {
