@@ -23,7 +23,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   font-family: $bodyfontfamily;
   margin: 0 auto;
   padding: 5px 15px;
-  text-align: center;
+  text-align: right;
 }
 
 .btn {
@@ -43,19 +43,28 @@ h3 {
   font-family: $bodyfontfamily;
 }
 
-.sidebar {
-  width: 100px;
-  float: left;
-  margin: 50px 50px 50px 50px;
+h4 {
+  text-align: center;
+  font-family: $bodyfontfamily;
 }
 
-.sidebar-right {
-  color: $primary-sub;
-  width: 100px;
-  float: right;
-  margin: 0px 200px 50px 50px;
+.sidebar {
+  width: 180px;
 }
-.btn.start {
-  position: fixed;
-  margin: 10px auto;
+
+form {
+  padding: 10px;
+}
+
+.score-img {
+  width: 100px;
+  height: 100px;
+}
+
+.center.content {
+  text-align: center;
+}
+
+footer {
+  clear: left;
 }
