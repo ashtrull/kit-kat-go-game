@@ -11,19 +11,7 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
 require('./example')
-
-// Game identifies it is X's turn
-
-// Player-x clicks a box to place marker
-
-// Marker appears in that space
-
-// Game checks for win
 
 $(() => {
   $(function () {
@@ -35,7 +23,9 @@ $(() => {
   })
   $('.start').on('click', function () {
     $('#grid-container').show()
+    boardEvents.resetGame()
     $('#game-prompt').html('Xavier always starts!')
+
   })
   $('.game.box').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
