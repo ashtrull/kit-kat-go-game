@@ -29,6 +29,7 @@ const onSignOut = function (event) {
 }
 
 const onChangePassword = function (event) {
+  console.log('change your password')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changePassword(data)
@@ -37,10 +38,10 @@ const onChangePassword = function (event) {
 }
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#sign-out').on('submit', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
+//  $('.user-signup').on('submit', authEvents.onSignUp)
+//  $('.user-login').on('submit', authEvents.onSignIn)
+//  $('#change-pw').on('click', authEvents.onChangePassword)
+//  $('#sign-out').on('submit', authEvents.onSignOut)
 }
 
 module.exports = {

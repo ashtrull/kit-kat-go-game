@@ -43,11 +43,19 @@ const changePassword = (data) => {
   })
 }
 
+const showGames = function (data) {
+  return $.ajax({
+    url: app.host + '/games',
+    method: 'GET'
+  })
+}
+
 module.exports = {
   app,
   config,
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  showGames
 }

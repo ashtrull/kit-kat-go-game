@@ -5,6 +5,7 @@ const config = require('./config')
 const gameEvents = require('./game/events.js')
 const boxes = require('./game/events.js')
 const boardEvents = require('./game/turn.js')
+const authEvents = require('./auth/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -28,10 +29,6 @@ $(() => {
   $(function () {
     $('#grid-container').hide()
     $('.start').hide()
-    $('#sign-in-button').hide()
-  })
-  $('#create-button').on('click', function () {
-    $('#sign-in-button').show()
   })
   $('#sign-in-button').on('click', function () {
     $('.start').show()
@@ -43,18 +40,14 @@ $(() => {
   $('.game.box').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
   })
+  // $('.start').on('click', function () {
+  //  ('.start').on()
+  // })
+  $('.user-signup').on('submit', authEvents.onSignUp)
+  $('.user-login').on('submit', authEvents.onSignIn)
+  $('#change-pw').on('click', authEvents.onChangePassword)
+  $('.user-logout').on('submit', authEvents.onSignOut)
 })
-//
-
-// TODO Message that it is now O's turn
-
-// Player-o clicks a box to place marker
-
-// Marker appears in that space
-
-// Game checks for win or game over
-
-// TODO Repeat until win logic is met OR until all spaces are full
 
 // TODO Message " __ wins! " or "Game over. Play again?"
 

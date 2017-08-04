@@ -1,35 +1,37 @@
-'use strict';
-//remove signIn and signOut
-const app = require('../app.js');
+'use strict'
 
-//remove me before code-along
+const app = require('../app.js')
+
 const signInSuccess = (data) => {
-  app.user = data.user;
-  console.log(app);
-};
+  app.user = data.user
+  console.log(app)
+  console.log('Successfully signed in!')
+  $('#sign-in-prompt').text('Signed in')
+}
 
-//remove me before code-along
 const signOutSuccess = () => {
-  app.user = null;
-  console.log(app);
-};
+  app.user = null
+  console.log(app)
+  console.log('Successfully signed out!')
+  $('Sign in to play!')
+}
 
 const changePasswordSuccess = () => {
-  console.log("Password Successfully Changed.");
-};
+  console.log('Password successfully changed.')
+}
 
 const success = (data) => {
-  console.log(data);
-};
+  console.log(data)
+}
 
-const failure = (error) => {
-  console.error(error);
-};
+const fail = (error) => {
+  console.error(error)
+}
 
 module.exports = {
-  failure,
+  fail,
   success,
   signInSuccess,
   signOutSuccess,
   changePasswordSuccess
-};
+}
