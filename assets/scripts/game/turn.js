@@ -92,9 +92,9 @@ const onPlaceMarker = function (id) {
     console.log(boxes[id].value)
     console.log(boxes)
     if (boxes[id].value === 'X') {
-      document.getElementById(id).innerHTML = "<img src='/assets/images/kitten-xavier.png' alt='kitten' style='width:80px; height:80px'>"
+      document.getElementById(id).innerHTML = "<img src='http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG-HD.png' alt='kitten' style='width:80px; height:80px'>"
     } if (boxes[id].value === 'O') {
-      document.getElementById(id).innerHTML = "<img src='/assets/images/kitten-oliver.png' style='width:80px; height:80px'>"
+      document.getElementById(id).innerHTML = "<http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG.png' style='width:80px; height:80px'>"
     }
     // document.getElementById(id).innerHTML = "<img src='/assets/images/kitten-oliver.png' style='width:80px; height:80px'>"
     checkForWin()
@@ -104,9 +104,9 @@ const onPlaceMarker = function (id) {
 
 const showImage = function (id) {
   if (boxes[id].value === 'X') {
-    document.getElementById(id).innerHTML = "<img src='/assets/images/kitten-xavier.png' alt='kitten' style='width:80px; height:80px'>"
+    document.getElementById(id).innerHTML = "<img src='http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG-HD.png' alt='kitten' style='width:80px; height:80px'>"
   } if (boxes[id].value === 'O') {
-    document.getElementById(id).innerHTML = "<img src='/assets/images/kitten-oliver.png' style='width:80px; height:80px'>"
+    document.getElementById(id).innerHTML = "<http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG.png' style='width:80px; height:80px'>"
   }
 }
 
