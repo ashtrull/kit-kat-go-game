@@ -1,4 +1,5 @@
 'use strict'
+<<<<<<< HEAD
 
 const example = require('../assets/scripts/example')
 
@@ -7,3 +8,5 @@ describe('Example', function () {
     expect(example).toBe(true)
   })
 })
+=======
+>>>>>>> game-logic
