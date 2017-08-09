@@ -17,9 +17,8 @@ $(() => {
   $(function () {
     $('#grid-container').hide()
     $('.start').hide()
-  })
-  $('#sign-in-button').on('click', function () {
-    $('.start').show()
+    $('.user-logout').hide()
+    $('#change-pw').hide()
   })
   $('.start').on('click', function () {
     $('#grid-container').show()

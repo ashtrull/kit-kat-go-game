@@ -7,7 +7,11 @@ const signInSuccess = (data) => {
   console.log(data)
   console.log('Successfully signed in!')
   $('#sign-in-prompt').text('Signed in as ' + data.user.email)
-  $('')
+  $('.user-signup').hide()
+  $('.user-login').hide()
+  $('.user-logout').show()
+  $('#change-pw').show()
+  $('.start').show()
 }
 
 const signOutSuccess = (data) => {
@@ -15,6 +19,8 @@ const signOutSuccess = (data) => {
   console.log(data)
   console.log('Successfully signed out!')
   $('#sign-in-prompt').text('Sign in to play!')
+  $('.user-login').show()
+  $('.user-signup').show()
 }
 
 const changePasswordSuccess = () => {
