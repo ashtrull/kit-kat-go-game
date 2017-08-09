@@ -25,8 +25,8 @@ $(() => {
     $('#grid-container').show()
     boardEvents.resetGame()
     $('#game-prompt').html('Xavier always starts!')
-
   })
+
   $('.game.box').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
   })
@@ -35,7 +35,7 @@ $(() => {
   // })
   $('.user-signup').on('submit', authEvents.onSignUp)
   $('.user-login').on('submit', authEvents.onSignIn)
-  $('#change-pw').on('click', authEvents.onChangePassword)
+  $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
 })
 
