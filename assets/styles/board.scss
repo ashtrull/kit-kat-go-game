@@ -1,0 +1,15 @@
+@import './colors';
+
+.container {
+  width: 600px;
+  text-align: center;
+  margin: 0px 100px 0px 100px;
+
+  & .box{
+    margin: 10px;
+    padding: 5px;
+    background-color: $secondary-color1;
+    height: 100px;
+    width: 100px;
+  }
+}
