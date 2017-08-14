@@ -31,7 +31,6 @@ $(() => {
 
   $('.game.box').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
-    apiEvents.onNewMove(this.id, event)
   })
   // $('.start').on('click', function () {
   //  ('.start').on()

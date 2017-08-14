@@ -2,52 +2,24 @@
 
 const app = require('../app.js')
 
-const signUpSuccess = (data) => {
-  app.user = data.user
+const createGameSuccess = (data) => {
+  app.game = data.game
+  app.game.id = data.game.id
   console.log(data)
-  console.log('Successfully created account!')
-  $('#sign-in-prompt').text('Created user ' + data.user.email)
+  console.log('Succeded')
 }
 
-const signUpFail = () => {
-  console.log('Passwords did not match or username taken.')
-  $('#sign-in-prompt').text('Could not make account. Please try again.')
+const createGameFail = (error) => {
+  console.error(error)
 }
 
-const signInSuccess = (data) => {
-  app.user = data.user
+const updateGameSuccess = (data) => {
   console.log(data)
-  console.log('Successfully signed in!')
-  $('#sign-in-prompt').text('Signed in as ' + data.user.email)
-  $('.user-signup').hide()
-  $('.user-login').hide()
-  $('.user-logout').show()
-  $('#change-pw').show()
-  $('.start').show()
+  console.log('Updated game')
 }
 
-const signInFail = () => {
-  console.log('Email/password combination not found')
-  $('#sign-in-prompt').text('Email/password combination not found')
-}
-
-const signOutSuccess = (data) => {
-  app.user = null
-  console.log(data)
-  console.log('Successfully signed out!')
-  $('#sign-in-prompt').text('Sign in to play!')
-  $('.user-login').show()
-  $('.user-signup').show()
-}
-
-const changePasswordSuccess = () => {
-  console.log('Password successfully changed.')
-  $('#sign-in-prompt').text('Password successfully changed. Signed in as' + app.user)
-}
-
-const changePasswordFail = () => {
-  console.log('Email/password combination not found')
-  $('#sign-in-prompt').text('Email/password combination not found')
+const updateGameFail = (error) => {
+  console.error(error)
 }
 
 const success = (data) => {
@@ -61,10 +33,8 @@ const fail = (error) => {
 module.exports = {
   fail,
   success,
-  signUpSuccess,
-  signUpFail,
-  signInSuccess,
-  signOutSuccess,
-  changePasswordSuccess,
-  changePasswordFail
+  createGameSuccess,
+  createGameFail,
+  updateGameSuccess,
+  updateGameFail
 }

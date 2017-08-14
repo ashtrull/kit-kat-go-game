@@ -11,7 +11,8 @@ const createGame = function (data) {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    }
+    },
+    data: data
   })
 }
 
@@ -26,7 +27,7 @@ const index = function () {
 }
 
 const updateGame = function (index, value, over) {
-  console.log(cell, index, value, over)
+  console.log('index:' + index + 'value:' + value)
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -36,10 +37,10 @@ const updateGame = function (index, value, over) {
     data: {
       'game': {
         'cell': {
-          'index': event.target.index,
-          'value': event.target.value
+          'index': index,
+          'value': value
         },
-        'over': false
+        'over': over
       }
     }
   })
@@ -88,6 +89,6 @@ module.exports = {
   index,
   updateGame,
   endGame,
-  //joinGame,
+  // joinGame,
   showGame
 }

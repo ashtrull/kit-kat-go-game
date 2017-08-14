@@ -9,17 +9,21 @@ const boxes = require('../game/turn.js')
 const onNewGame = function (event) {
   event.preventDefault()
   console.log('Creating new game')
+  const data = getFormFields(event.target)
   // const data = getFormFields(event.target)
-  api.createGame()
-    .done(ui.success)
+  api.createGame(data)
+    .done(ui.createGameSuccess)
     .fail(ui.fail)
 }
 
-const onNewMove = function (id, event) {
+const onNewMove = function (index, value, over) {
+  event.preventDefault()
+  console.log(index, value, over)
+  const data = getFormFields(event.target)
+  console.log(data)
   console.log('Adding new move')
-  const data = event.target[id]
-  api.updateGame(this.id, boxes[this.id].value, false)
-    .done(ui.success)
+  api.updateGame(index, value, over)
+    .done(ui.updateGameSuccess)
     .fail(ui.fail)
 }
 
@@ -64,6 +68,7 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
+  boxes,
   app,
   getFormFields,
   onNewGame,
