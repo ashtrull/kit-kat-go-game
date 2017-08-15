@@ -15,7 +15,6 @@
     <header class="header-bar">KIT CAT GO!</header>
     <nav class="navbar">
     </nav>
-    <section class="body" id="body-container"
     <div class="row">
       <div class="col-xs-2 left sidebar">
         <img src="http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG-HD.png" class="score-img" alt="kitten">
@@ -23,10 +22,13 @@
       <img src="http://www.pngall.com/wp-content/uploads/2016/05/Kitten-PNG.png" class="score-img" alt="kitten">
       <h3> Oliver's Score:<span id="oscore">0</span></h3>
     </div>
+  </div>
     <div class="col-xs-8 center content">
       <div class="content">
         <h3 id="game-prompt"> Ready to play? </h3>
-        <button type="button" class="btn btn-primary start" name="button">Start New Game</button>
+        <form class="new-game" action="index.html" method="post">
+        <button type="submit" class="btn btn-primary start" name="button">Start New Game</button>
+        </form>
       </div>
       <section class="container" id="grid-container">
           <div class="row">
@@ -54,6 +56,15 @@
             </div>
           </div>
         </section>
+        <div class="game-history" id="game-history">
+          <h3>User Game History</h3>
+          <table class="game-history" id="game-history-table">
+              <tr>
+                <th>Game ID</th>
+                <th>Completed?</th>
+              </tr>
+          </table>
+        </div>
     </div>
     <div class="col-xs-2 right sidebar">
       <h4 id="sign-in-prompt">Sign in to play!</h4>
@@ -78,6 +89,9 @@
 <input name="credentials[password]" type="password" value="" placeholder="Password">
 <input name="credentials[newpassword]" type="password" value="" placeholder="New Password">
 <button type="submit" value="Change Password" class="btn btn-default" id="change-pw-button">Change Password</button>
+</form>
+<form class="show-game-history" id="game-history-form">
+<button type="submit" value="Game History" class="btn btn-default" id="game-hist-button">Show Game History</button>
 </form>
 </div>
   <div class=row>

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # curl "http://localhost:3000/sign-out/$ID" \
-curl "http://httpbin.org/delete?id=$ID" \
+curl "https://aqueous-atoll-85096.herokuapp.com/delete?id=$ID" \
   --include \
   --request DELETE
 

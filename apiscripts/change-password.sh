@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #curl "http://localhost:3000/change-password/${ID}" \
-curl "http://httpbin.org/patch?id=${ID}" \
+curl "https://aqueous-atoll-85096.herokuapp.com/patch?id=${ID}" \
   --include \
   --request PATCH \
   --data-urlencode ""

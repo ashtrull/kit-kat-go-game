@@ -6,6 +6,7 @@ const gameEvents = require('./game/events.js')
 const boxes = require('./game/events.js')
 const boardEvents = require('./game/turn.js')
 const authEvents = require('./auth/events.js')
+const apiEvents = require('./game_api/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -19,8 +20,12 @@ $(() => {
     $('.start').hide()
     $('.user-logout').hide()
     $('#change-pw').hide()
+    $('#game-history').hide()
+    $('#game-history-form').hide()
   })
-  $('.start').on('click', function () {
+  $('.new-game').on('submit', apiEvents.onNewGame)
+  $('.new-game').on('submit', function () {
+    console.log('start button clicked')
     $('#grid-container').show()
     boardEvents.resetGame()
     $('#game-prompt').html('Xavier always starts!')
@@ -37,6 +42,7 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
 })
+$('.game-history').on('submit', apiEvents.onGameHistory)
 
 // TODO Message " __ wins! " or "Game over. Play again?"
 

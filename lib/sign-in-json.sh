@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# curl "http://httpbin.org/post" \
-curl "https://aqueous-atoll-85096.herokuapp.com/sign-in" \
+curl "https://aqueous-atoll-85096.herokuapp.com" \
+# curl "http://tic-tac-toe.wdibos.com" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \

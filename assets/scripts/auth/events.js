@@ -17,6 +17,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   api.signIn(data)
     .done(ui.signInSuccess)
     .fail(ui.signInFail)
@@ -34,6 +35,7 @@ const onChangePassword = function (event) {
   console.log('change your password')
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
     .fail(ui.changePasswordFail)
@@ -51,5 +53,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  addHandlers
+  addHandlers,
+  app
 }

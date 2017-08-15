@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/change-password/${ID}" \
+curl "https://aqueous-atoll-85096.herokuapp.com/${ID}" \
 #curl "http://httpbin.org/patch?id=${ID}" \
   --include \
   --request PATCH \
