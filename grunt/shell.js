@@ -27,25 +27,25 @@ module.exports = {
   'deploy-prepare-2': {
     command: 'git checkout --orphan gh-pages'
   },
-  'deploy-preare-3': {
+  'deploy-prepare-3': {
     command:
       'git rm --cached \'*\''
   },
   'deploy-publish-1': {
-    command: 'touch .nojekyll' {
+    command: 'touch .nojekyll'
   },
   'deploy-publish-2': {
-    command: `git add --force .nojekyll ${ghPagesList}` {
+    command: `git add --force .nojekyll ${ghPagesList}`
   },
-  'deploy-publis-3': {
+  'deploy-publish-3': {
     command: 'git commit -m "deploy task"'
   },
   'deploy-publish-4': {
     command: 'git push origin gh-pages --force'
-  }
+  },
   'deploy-publish-5': {
     command: 'git clean -x -d --force --exclude=node_modules'
-  }
+  },
   'deploy-publish-6': {
     command: 'git checkout master'
   }
