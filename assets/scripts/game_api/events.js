@@ -26,10 +26,18 @@ const onNewMove = function (index, value, over) {
   console.log(index, value, over)
 }
 
-const onGameOver = function (event) {
-  console.log('Adding game over')
-  api.endGame(true)
-    .done(ui.success)
+// const onGameOver = function (event) {
+//   console.log('Adding game over')
+//   api.endGame(true)
+//     .done(ui.success)
+//     .fail(ui.fail)
+// }
+
+const onGameHistory = function (event) {
+  event.preventDefault()
+  console.log('Getting game history')
+  api.gameHistory()
+    .done(ui.gameHistorySuccess)
     .fail(ui.fail)
 }
 
@@ -72,5 +80,6 @@ module.exports = {
   getFormFields,
   onNewGame,
   onNewMove,
-  onGameOver
+  // onGameOver,
+  onGameHistory
 }

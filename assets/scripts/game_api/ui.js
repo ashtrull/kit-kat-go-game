@@ -22,6 +22,15 @@ const updateGameFail = (error) => {
   console.error(error)
 }
 
+const gameHistorySuccess = (data) => {
+  console.table(data.games)
+  $('.game-history').show()
+  const gameArray = data.games
+  gameArray.forEach(function (game) {
+    $('.game-history-table').append('<tr><td>' + game.id + '</td><td' + game.done + '</td></tr>')
+  })
+}
+
 const success = (data) => {
   console.log(data)
 }
@@ -36,5 +45,6 @@ module.exports = {
   createGameSuccess,
   createGameFail,
   updateGameSuccess,
-  updateGameFail
+  updateGameFail,
+  gameHistorySuccess
 }

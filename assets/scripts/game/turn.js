@@ -77,7 +77,6 @@ const winFunc = function () {
   console.log(turn + ' wins!')
   $('#game-prompt').html(turn + ' wins! Game Over.')
   $('.game.box').off()
-  gameApi.onGameOver()
   over = true
   if (turn === 'Xavier') {
     xScore += 1
@@ -98,7 +97,6 @@ const noWin = function () {
   // game over process if all boxes are full:
   if (moveCounter >= 9) {
     $('#game-prompt').html('Cat\'s Game! Game Over.')
-    gameApi.onGameOver()
     over = true
     return over
     // if its x's turn:
@@ -164,6 +162,7 @@ const resetGame = function () {
   $('.game.box').on('click', function () {
     onPlaceMarker(this.id)
   })
+  $('.game-history').hide()
   return boxes
 }
 

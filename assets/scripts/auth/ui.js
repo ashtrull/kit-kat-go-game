@@ -24,6 +24,7 @@ const signInSuccess = (data) => {
   $('.user-logout').show()
   $('#change-pw').show()
   $('.start').show()
+  $('#game-history-form').show()
 }
 
 const signInFail = () => {
@@ -64,6 +65,7 @@ module.exports = {
   signUpSuccess,
   signUpFail,
   signInSuccess,
+  signInFail,
   signOutSuccess,
   changePasswordSuccess,
   changePasswordFail

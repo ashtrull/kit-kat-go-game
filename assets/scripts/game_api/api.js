@@ -46,17 +46,12 @@ const updateGame = function (index, value, over) {
   })
 }
 
-const endGame = function (over) {
+const gameHistory = function (data) {
   return $.ajax({
-    url: app.host + '/games/' + app.game.id,
-    method: 'PATCH',
+    url: app.host + '/games[?over=]',
+    method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    },
-    data: {
-      'game': {
-        'over': over
-      }
     }
   })
 }
@@ -88,7 +83,7 @@ module.exports = {
   createGame,
   index,
   updateGame,
-  endGame,
+  gameHistory,
   // joinGame,
   showGame
 }

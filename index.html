@@ -56,6 +56,15 @@
             </div>
           </div>
         </section>
+        <div class="game-history" id="game-history">
+          <h3>User Game History</h3>
+          <table class="game-history" id="game-history-table">
+              <tr>
+                <th>Game ID</th>
+                <th>Completed?</th>
+              </tr>
+          </table>
+        </div>
     </div>
     <div class="col-xs-2 right sidebar">
       <h4 id="sign-in-prompt">Sign in to play!</h4>
@@ -80,6 +89,9 @@
 <input name="credentials[password]" type="password" value="" placeholder="Password">
 <input name="credentials[newpassword]" type="password" value="" placeholder="New Password">
 <button type="submit" value="Change Password" class="btn btn-default" id="change-pw-button">Change Password</button>
+</form>
+<form class="show-game-history" id="game-history-form">
+<button type="submit" value="Game History" class="btn btn-default" id="game-hist-button">Show Game History</button>
 </form>
 </div>
   <div class=row>

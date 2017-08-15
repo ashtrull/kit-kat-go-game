@@ -20,6 +20,8 @@ $(() => {
     $('.start').hide()
     $('.user-logout').hide()
     $('#change-pw').hide()
+    $('#game-history').hide()
+    $('#game-history-form').hide()
   })
   $('.new-game').on('submit', apiEvents.onNewGame)
   $('.new-game').on('submit', function () {
@@ -40,6 +42,7 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
 })
+$('.game-history').on('submit', apiEvents.onGameHistory)
 
 // TODO Message " __ wins! " or "Game over. Play again?"
 
