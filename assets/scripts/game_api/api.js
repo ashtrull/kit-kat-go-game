@@ -27,7 +27,7 @@ const index = function () {
 }
 
 const updateGame = function (index, value, over) {
-  console.log('index:' + index + 'value:' + value)
+  console.log(index, value, over)
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',

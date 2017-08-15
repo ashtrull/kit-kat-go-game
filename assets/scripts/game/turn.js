@@ -50,7 +50,7 @@ const onPlaceMarker = function (id) {
     document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>"
     console.log(boxes)
     checkForWin()
-    index = boxes[id]
+    index = id
     value = boxes[id].value
     gameApi.onNewMove(index, value, over)
   } else if (turn === 'Oliver' && boxes[id].value === 0) {
@@ -60,13 +60,15 @@ const onPlaceMarker = function (id) {
     // after placing the marker, check for a win
     console.log(boxes)
     checkForWin()
+    index = id
+    value = boxes[id].value
+    gameApi.onNewMove(index, value, over)
   }
   // const data = {
   //  'index': boxes[id].index,
   //   'value': boxes[id].value,
   //   'over': false
   // }
-  console.log(boxes)
   return boxes
 }
 
@@ -144,7 +146,7 @@ const checkForWin = function () {
 }
 
 // function to reset the game when the button is clicked
-const resetGame = function() {
+const resetGame = function () {
   console.log('game reset')
   $('.game.box').html('')
   boxes[0].value = 0

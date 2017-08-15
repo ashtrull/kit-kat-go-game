@@ -19,12 +19,11 @@ const onNewGame = function (event) {
 const onNewMove = function (index, value, over) {
   event.preventDefault()
   console.log(index, value, over)
-  const data = getFormFields(event.target)
-  console.log(data)
   console.log('Adding new move')
   api.updateGame(index, value, over)
     .done(ui.updateGameSuccess)
     .fail(ui.fail)
+  console.log(index, value, over)
 }
 
 const onGameOver = function (event) {
