@@ -11,7 +11,7 @@ The game was developed in multiple phases:
   - I designed a couple sketch wireframes with pen and paper to identify what the game interface would generally look like
   - I drafted user stories to think about what players would want and need to be able to do in order for the game to be functional and enjoyable.
   - I drew a logic map of the different elements of the game and the different attributes and functions each element would have.
-  - Check out images of my wireframes, user stories, and map on imgur:
+  - Check out images of my wireframes, user stories, and map on imgur:(http://imgur.com/a/jlX30)
 
 2. Game logic development
   - HTML: I created a basic structure of the webpage to give myself an idea of what the game would look like, based on my wireframes
