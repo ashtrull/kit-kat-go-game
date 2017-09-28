@@ -1,7 +1,6 @@
 'use strict'
 
 const id = require('../index.js')
-const checkWin = require('./win.js')
 
 // TODO should i be creating an object "game"? need to track # of moves to register game over
 
@@ -34,6 +33,5 @@ const checkWin = require('./win.js')
 // }
 
 module.exports = {
-  id,
-  checkWin
+  id
 }

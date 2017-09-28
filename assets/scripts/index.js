@@ -3,7 +3,6 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const gameEvents = require('./game/events.js')
-const boxes = require('./game/events.js')
 const boardEvents = require('./game/turn.js')
 const authEvents = require('./auth/events.js')
 const apiEvents = require('./game_api/events.js')
@@ -20,8 +19,10 @@ $(() => {
     $('.start').hide()
     $('.user-logout').hide()
     $('#change-pw').hide()
-    $('#game-history').hide()
-    $('#game-history-form').hide()
+    $('#game-history-container').hide()
+    $('#game-history-btn').hide()
+    $('#hide-game-history-btn').hide()
+    $('#save-game-btn').hide()
   })
   $('.new-game').on('submit', apiEvents.onNewGame)
   $('.new-game').on('submit', function () {
@@ -42,6 +43,15 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
   $('#game-history-btn').on('click', apiEvents.onGameHistory)
+  $('#hide-game-history-btn').on('click', function () {
+    $('#game-history-container').hide()
+    $('#grid-container').show()
+    $('#game-start-content').show()
+    $('#game-history-btn').show()
+    $('#hide-game-history-btn').hide()
+  })
+  $('#save-game-btn').on('click', apiEvents.onSaveGame)
+  $(document).on('click', '#restore-game-btn', apiEvents.onRestoreGame)
 })
 
 // TODO Message " __ wins! " or "Game over. Play again?"
@@ -54,6 +64,5 @@ $(() => {
 
 module.exports = {
   gameEvents,
-  boxes,
   boardEvents
 }
