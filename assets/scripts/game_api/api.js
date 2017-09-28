@@ -48,7 +48,7 @@ const updateGame = function (index, value, over) {
 
 const gameHistory = function (data) {
   return $.ajax({
-    url: app.host + '/games[?over=]',
+    url: app.host + '/games',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
@@ -72,7 +72,19 @@ const showGame = function (id) {
     url: app.host + '/games/' + id,
     method: 'GET',
     headers: {
-      Authorization: 'Token token' + app.user.token
+      Authorization: 'Token token=' + app.user.token
+    }
+  })
+}
+
+const restoreGame = function (gameId) {
+  console.log(gameId)
+  console.log(app.user.token)
+  return $.ajax({
+    url: app.host + '/games/' + gameId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
     }
   })
 }
@@ -85,5 +97,6 @@ module.exports = {
   updateGame,
   gameHistory,
   // joinGame,
-  showGame
+  showGame,
+  restoreGame
 }

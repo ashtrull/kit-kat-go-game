@@ -24,7 +24,7 @@
     </div>
   </div>
     <div class="col-xs-8 center content">
-      <div class="content">
+      <div class="content" id="game-start-content">
         <h3 id="game-prompt"> Ready to play? </h3>
         <form class="new-game" action="index.html" method="post">
         <button type="submit" class="btn btn-primary start" name="button">Start New Game</button>
@@ -56,14 +56,26 @@
             </div>
           </div>
         </section>
-        <div class="game-history" id="game-history">
-          <h3>User Game History</h3>
-          <table class="game-history" id="game-history-table">
+        <div class="game-history" id="game-history-container">
+          <h3>Game History</h3>
+          <script id="game-history-template" type="text/x-handlebars-template">
+            <table id="game-history-table">
+            <thead>
+              <th>Game Id</th>
+              <th>Completed</th>
+              <th>Restore Game</th>
+            </thead>
+            <tbody>
+              {{#games}}
               <tr>
-                <th>Game ID</th>
-                <th>Completed?</th>
+                <td>{{id}}</td>
+                <td>{{over}}</td>
+                <td><button id="restore-game-btn" data-id="{{id}}" type="submit" class="btn btn-default" value="Restore Game">Restore Game</button>
               </tr>
-          </table>
+        {{/games}}
+    </tbody>
+</table>
+</script>
         </div>
     </div>
     <div class="col-xs-2 right sidebar">
@@ -90,9 +102,10 @@
 <input name="credentials[newpassword]" type="password" value="" placeholder="New Password">
 <button type="submit" value="Change Password" class="btn btn-default" id="change-pw-button">Change Password</button>
 </form>
-<form class="show-game-history" id="game-history-form">
 <button type="submit" value="Game History" class="btn btn-default" id="game-history-btn">Show Game History</button>
-</form>
+<button type="submit" value="Game History" class="btn btn-default" id="hide-game-history-btn">Hide Game History</button>
+<button type="submit" value="Save Game" class="btn btn-default" id="save-game-btn">Save Game</button>
+
 </div>
   <div class=row>
       <div class="col-xs-12">

@@ -56,6 +56,22 @@ form {
   padding: 10px;
 }
 
+table {
+  padding: 20px;
+  width: 80%;
+  margin: auto;
+  border-style: solid;
+  font-size: 18px;
+  font-family: $bodyfontfamily;
+  text-align: center;
+}
+
+thead {
+  font-size: 24px;
+  font-family: $bodyfontfamily;
+  text-align: center;
+}
+
 .score-img {
   width: 100px;
   height: 100px;

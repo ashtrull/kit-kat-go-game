@@ -24,7 +24,7 @@ const signInSuccess = (data) => {
   $('.user-logout').show()
   $('#change-pw').show()
   $('.start').show()
-  $('#game-history-form').show()
+  $('#game-history-btn').show()
 }
 
 const signInFail = () => {
@@ -39,11 +39,17 @@ const signOutSuccess = (data) => {
   $('#sign-in-prompt').text('Sign in to play!')
   $('.user-login').show()
   $('.user-signup').show()
+  $('#game-history-container').hide()
+  $('#grid-container').hide()
+  $('#game-start-content').hide()
+  $('#game-history-btn').hide()
+  $('#change-pw').hide()
+  $('#save-game-btn').hide()
 }
 
-const changePasswordSuccess = () => {
+const changePasswordSuccess = (data) => {
   console.log('Password successfully changed.')
-  $('#sign-in-prompt').text('Password successfully changed. Signed in as' + app.user)
+  $('#sign-in-prompt').text('Password successfully changed.')
 }
 
 const changePasswordFail = () => {

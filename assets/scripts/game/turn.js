@@ -2,15 +2,8 @@
 const boardEvents = require('../index.js')
 const gameApi = require('../game_api/events.js')
 
-// const checkWin = require('./win.js')
 // turn counter
 let turn = 'Oliver'
-// turn prompt
-// if (turn === 'Xavier') {
-//  console.log('It is ' + turn + '\'s turn!')
-// } else if (turn === 'Oliver') {
-//  console.log('It is ' + turn + '\'s turn!')
-// }
 
 // an array to set up the game board like this:
 //  0  |  1  |  2  |
@@ -19,7 +12,7 @@ let turn = 'Oliver'
 //  ---------------
 //  6  |  7  |  8  |
 
-const boxes = [
+const cells = [
   {index: 0, value: 0},
   {index: 1, value: 0},
   {index: 2, value: 0},
@@ -45,31 +38,33 @@ let over
 // function to put the cat marker in the box clicked:
 const onPlaceMarker = function (id) {
   // checks who's turn it is and if the box is empty to place the marker:
-  if (turn === 'Xavier' && boxes[id].value === 0) {
-    boxes[id].value = 'X'
-    document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>"
-    console.log(boxes)
+  if (turn === 'Xavier' && cells[id].value === 0) {
+    cells[id].value = 'X'
+    // document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>"
+    console.log(cells)
     checkForWin()
     index = id
-    value = boxes[id].value
+    value = cells[id].value
     gameApi.onNewMove(index, value, over)
-  } else if (turn === 'Oliver' && boxes[id].value === 0) {
-    boxes[id].value = 'O'
+  } else if (turn === 'Oliver' && cells[id].value === 0) {
+    cells[id].value = 'O'
     console.log('marked O')
-    document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>"
+    // document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>"
     // after placing the marker, check for a win
-    console.log(boxes)
+    console.log(cells)
     checkForWin()
     index = id
-    value = boxes[id].value
+    value = cells[id].value
     gameApi.onNewMove(index, value, over)
   }
-  // const data = {
-  //  'index': boxes[id].index,
-  //   'value': boxes[id].value,
-  //   'over': false
-  // }
-  return boxes
+  cells.map(function (c) {
+    if (c.value === 'X') {
+      $('#' + c.index).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
+    } else if (c.value === 'O') {
+      $('#' + c.index).html("<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>")
+    }
+  })
+  console.log(cells)
 }
 
 // If someone has won, this function changes the game prompt and scoreboard
@@ -94,7 +89,7 @@ const winFunc = function () {
 const noWin = function () {
   moveCounter += 1
   console.log('Move count is ' + moveCounter)
-  // game over process if all boxes are full:
+  // game over process if all cells are full:
   if (moveCounter >= 9) {
     $('#game-prompt').html('Cat\'s Game! Game Over.')
     over = true
@@ -118,24 +113,24 @@ const noWin = function () {
 
 const checkForWin = function () {
   // checks for horizontal win:
-  if (boxes[0].value !== 0 && boxes[0].value === boxes[1].value && boxes[0].value === boxes[2].value) {
+  if (cells[0].value !== 0 && cells[0].value === cells[1].value && cells[0].value === cells[2].value) {
     winFunc()
-  } else if (boxes[3].value !== 0 && boxes[3].value === boxes[4].value && boxes[3].value === boxes[5].value) {
+  } else if (cells[3].value !== 0 && cells[3].value === cells[4].value && cells[3].value === cells[5].value) {
     winFunc()
-  } else if (boxes[6].value !== 0 && boxes[6].value === boxes[7].value && boxes[6].value === boxes[8].value) {
+  } else if (cells[6].value !== 0 && cells[6].value === cells[7].value && cells[6].value === cells[8].value) {
     winFunc()
     // checks for vertical win:
-  } else if (boxes[0].value !== 0 && boxes[0].value === boxes[3].value && boxes[0].value === boxes[6].value) {
+  } else if (cells[0].value !== 0 && cells[0].value === cells[3].value && cells[0].value === cells[6].value) {
     winFunc()
-  } else if (boxes[1].value !== 0 && boxes[1].value === boxes[4].value && boxes[1].value === boxes[7].value) {
+  } else if (cells[1].value !== 0 && cells[1].value === cells[4].value && cells[1].value === cells[7].value) {
     winFunc()
-  } else if (boxes[2].value !== 0 && boxes[2].value === boxes[5].value && boxes[2].value === boxes[8].value) {
+  } else if (cells[2].value !== 0 && cells[2].value === cells[5].value && cells[2].value === cells[8].value) {
     winFunc()
     // checks for diagonal win top left to bottom right:
-  } else if (boxes[0].value !== 0 && boxes[0].value === boxes[4].value && boxes[0].value === boxes[8].value) {
+  } else if (cells[0].value !== 0 && cells[0].value === cells[4].value && cells[0].value === cells[8].value) {
     winFunc()
     // checks for diagonal win bottom left to top right:
-  } else if (boxes[6].value !== 0 && boxes[6].value === boxes[4].value && boxes[6].value === boxes[2].value) {
+  } else if (cells[6].value !== 0 && cells[6].value === cells[4].value && cells[6].value === cells[2].value) {
     winFunc()
     // what to do if no win on this turn
   } else {
@@ -147,23 +142,23 @@ const checkForWin = function () {
 const resetGame = function () {
   console.log('game reset')
   $('.game.box').html('')
-  boxes[0].value = 0
-  boxes[1].value = 0
-  boxes[2].value = 0
-  boxes[3].value = 0
-  boxes[4].value = 0
-  boxes[5].value = 0
-  boxes[6].value = 0
-  boxes[7].value = 0
-  boxes[8].value = 0
+  cells[0].value = 0
+  cells[1].value = 0
+  cells[2].value = 0
+  cells[3].value = 0
+  cells[4].value = 0
+  cells[5].value = 0
+  cells[6].value = 0
+  cells[7].value = 0
+  cells[8].value = 0
   moveCounter = 0
-  console.log('The boxes are ' + boxes)
+  console.log('The cells are ' + cells)
   turn = 'Xavier'
   $('.game.box').on('click', function () {
     onPlaceMarker(this.id)
   })
   $('.game-history').hide()
-  return boxes
+  return cells
 }
 
 module.exports = {
