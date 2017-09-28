@@ -41,8 +41,8 @@ $(() => {
   $('.user-login').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePassword)
   $('.user-logout').on('submit', authEvents.onSignOut)
+  $('#game-history-btn').on('click', apiEvents.onGameHistory)
 })
-$('.game-history').on('submit', apiEvents.onGameHistory)
 
 // TODO Message " __ wins! " or "Game over. Play again?"
 

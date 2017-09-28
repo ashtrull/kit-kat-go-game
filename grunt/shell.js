@@ -29,7 +29,7 @@ module.exports = {
   },
   'deploy-prepare-3': {
     command:
-      'git rm --cached -f \'*\''
+      'git rm --cached \'*\''
   },
   'deploy-publish-1': {
     command: 'touch .nojekyll'
