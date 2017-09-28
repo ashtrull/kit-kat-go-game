@@ -36,6 +36,7 @@ const onNewMove = function (index, value, over) {
 const onGameHistory = function (event) {
   event.preventDefault()
   console.log('Getting game history')
+  console.log(event.target)
   api.gameHistory()
     .done(ui.gameHistorySuccess)
     .fail(ui.fail)
