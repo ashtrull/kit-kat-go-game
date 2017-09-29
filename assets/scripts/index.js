@@ -32,7 +32,7 @@ $(() => {
     $('#game-prompt').html('Xavier always starts!')
   })
 
-  $('.game.box').on('click', function () {
+  $('.game.cell').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
   })
   // $('.start').on('click', function () {

@@ -66,9 +66,13 @@ table {
   text-align: center;
 }
 
-thead {
-  font-size: 24px;
+th {
+  font-size: 20px;
   font-family: $bodyfontfamily;
+  text-align: center;
+}
+
+tr {
   text-align: center;
 }
 
