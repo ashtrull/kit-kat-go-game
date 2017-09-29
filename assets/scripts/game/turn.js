@@ -35,9 +35,10 @@ let value
 let index
 let over
 
-// function to put the cat marker in the box clicked:
+// function to put the cat marker in the cell clicked:
 const onPlaceMarker = function (id) {
-  // checks who's turn it is and if the box is empty to place the marker:
+  console.log('onPlaceMarker')
+  // checks who's turn it is and if the cell is empty to place the marker:
   if (turn === 'Xavier' && cells[id].value === 0) {
     cells[id].value = 'X'
     // document.getElementById(id).innerHTML = "<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>"
@@ -71,7 +72,7 @@ const onPlaceMarker = function (id) {
 const winFunc = function () {
   console.log(turn + ' wins!')
   $('#game-prompt').html(turn + ' wins! Game Over.')
-  $('.game.box').off()
+  $('.game.cell').off()
   over = true
   if (turn === 'Xavier') {
     xScore += 1
@@ -87,6 +88,7 @@ const winFunc = function () {
 
 // If no one has one after the turn, change the prompt based on if the game is still going or if the board is full (game over)
 const noWin = function () {
+  console.log('noWin')
   moveCounter += 1
   console.log('Move count is ' + moveCounter)
   // game over process if all cells are full:
@@ -113,6 +115,7 @@ const noWin = function () {
 
 const checkForWin = function () {
   // checks for horizontal win:
+  console.log('checkForWin')
   if (cells[0].value !== 0 && cells[0].value === cells[1].value && cells[0].value === cells[2].value) {
     winFunc()
   } else if (cells[3].value !== 0 && cells[3].value === cells[4].value && cells[3].value === cells[5].value) {
@@ -141,7 +144,7 @@ const checkForWin = function () {
 // function to reset the game when the button is clicked
 const resetGame = function () {
   console.log('game reset')
-  $('.game.box').html('')
+  $('.game.cell').html('')
   cells[0].value = 0
   cells[1].value = 0
   cells[2].value = 0
@@ -154,7 +157,7 @@ const resetGame = function () {
   moveCounter = 0
   console.log('The cells are ' + cells)
   turn = 'Xavier'
-  $('.game.box').on('click', function () {
+  $('.game.cell').on('click', function () {
     onPlaceMarker(this.id)
   })
   $('.game-history').hide()

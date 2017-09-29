@@ -8,7 +8,6 @@ const createGameSuccess = (data) => {
   app.game = data.game
   app.game.id = data.game.id
   console.log(data)
-  console.log('Succeded')
   $('#save-game-btn').show()
 }
 
@@ -17,6 +16,7 @@ const createGameFail = (error) => {
 }
 
 const updateGameSuccess = (data) => {
+  console.log('updateGameSuccess')
   console.log(data)
   console.log('Updated game')
   const game = data.game
@@ -53,23 +53,34 @@ const gameHistorySuccess = (data) => {
 
 const restoreGameSuccess = (data) => {
   console.log('restoreGameSuccess data: ' + data)
+  app.game = data
   $('#game-history-container').hide()
   $('#grid-container').show()
+  $('.cell').html('')
   // update the cells array with the values from game.cells
-  const restoredCells = [
-    {index: 0, value: data.cells[0]},
-    {index: 1, value: data.cells[1]},
-    {index: 2, value: data.cells[2]},
-    {index: 3, value: data.cells[3]},
-    {index: 4, value: data.cells[4]},
-    {index: 5, value: data.cells[4]},
-    {index: 6, value: data.cells[6]},
-    {index: 7, value: data.cells[7]},
-    {index: 8, value: data.cells[8]}
-  ]
-  gameTurn.cells = restoredCells
-  console.log(gameTurn.cells)
-  // conditional if box 0 === x, place xavier in inner html of '#0'
+  // const restoredCells = [
+  //   {index: 0, value: data.cells[0]},
+  //   {index: 1, value: data.cells[1]},
+  //   {index: 2, value: data.cells[2]},
+  //   {index: 3, value: data.cells[3]},
+  //   {index: 4, value: data.cells[4]},
+  //   {index: 5, value: data.cells[5]},
+  //   {index: 6, value: data.cells[6]},
+  //   {index: 7, value: data.cells[7]},
+  //   {index: 8, value: data.cells[8]}
+  // ]
+  // gameTurn.cells = restoredCells
+  // console.log(gameTurn.cells)
+  $('#0').value = data.cells[0]
+  $('#1').value = data.cells[1]
+  $('#2').value = data.cells[2]
+  $('#3').value = data.cells[3]
+  $('#4').value = data.cells[4]
+  $('#5').value = data.cells[5]
+  $('#6').value = data.cells[6]
+  $('#7').value = data.cells[7]
+  $('#8').value = data.cells[8]
+  // conditional if cell 0 === x, place xavier in inner html of '#0'
   // repeat for all 9 cells
   // if # of turns %2 === 0 , it's Xavier's turns
   // else it's Oliver's turn
