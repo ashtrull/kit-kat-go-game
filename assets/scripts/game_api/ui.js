@@ -6,8 +6,8 @@ const gameTurn = require('../game/turn.js')
 
 const createGameSuccess = (data) => {
   app.game = data.game
-  app.game.id = data.game.id
   console.log(data)
+  console.log(app.game)
   $('#save-game-btn').show()
 }
 
@@ -16,6 +16,7 @@ const createGameFail = (error) => {
 }
 
 const updateGameSuccess = (data) => {
+  app.game = data.game
   console.log('updateGameSuccess')
   console.log(data)
   console.log('Updated game')
@@ -52,39 +53,30 @@ const gameHistorySuccess = (data) => {
 }
 
 const restoreGameSuccess = (data) => {
-  console.log('restoreGameSuccess data: ' + data)
+  console.log(data)
   app.game = data
+  console.log(app.game)
   $('#game-history-container').hide()
   $('#grid-container').show()
   $('.cell').html('')
   // update the cells array with the values from game.cells
-  // const restoredCells = [
-  //   {index: 0, value: data.cells[0]},
-  //   {index: 1, value: data.cells[1]},
-  //   {index: 2, value: data.cells[2]},
-  //   {index: 3, value: data.cells[3]},
-  //   {index: 4, value: data.cells[4]},
-  //   {index: 5, value: data.cells[5]},
-  //   {index: 6, value: data.cells[6]},
-  //   {index: 7, value: data.cells[7]},
-  //   {index: 8, value: data.cells[8]}
-  // ]
-  // gameTurn.cells = restoredCells
+  const cells = data.cells
+
   // console.log(gameTurn.cells)
-  $('#0').value = data.cells[0]
-  $('#1').value = data.cells[1]
-  $('#2').value = data.cells[2]
-  $('#3').value = data.cells[3]
-  $('#4').value = data.cells[4]
-  $('#5').value = data.cells[5]
-  $('#6').value = data.cells[6]
-  $('#7').value = data.cells[7]
-  $('#8').value = data.cells[8]
+  // $('#0').value = data.cells[0]
+  // $('#1').value = data.cells[1]
+  // $('#2').value = data.cells[2]
+  // $('#3').value = data.cells[3]
+  // $('#4').value = data.cells[4]
+  // $('#5').value = data.cells[5]
+  // $('#6').value = data.cells[6]
+  // $('#7').value = data.cells[7]
+  // $('#8').value = data.cells[8]
   // conditional if cell 0 === x, place xavier in inner html of '#0'
   // repeat for all 9 cells
   // if # of turns %2 === 0 , it's Xavier's turns
   // else it's Oliver's turn
-  gameTurn.cells.map(function (c) {
+  cells.map(function (c) {
     if (c.value === 'X') {
       $('#' + c.index).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
     } else if (c.value === 'O') {

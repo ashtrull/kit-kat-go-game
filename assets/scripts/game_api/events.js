@@ -4,15 +4,11 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
-const gameTurn = require('../game/turn.js')
-
 
 const onNewGame = function (event) {
   event.preventDefault()
   console.log('Creating new game')
-  const data = getFormFields(event.target)
-  // const data = getFormFields(event.target)
-  api.createGame(data)
+  api.createGame()
     .done(ui.createGameSuccess)
     .fail(ui.fail)
 }
@@ -49,7 +45,7 @@ const onRestoreGame = function (event) {
   // api.restoreGame(gameId)
   const gameData = JSON.parse(localStorage.getItem(gameId))
   console.log(localStorage.getItem(gameId))
-  console.log('gameData: ' + gameData)
+  console.log(gameData)
   if (localStorage.getItem(gameId)) {
     ui.restoreGameSuccess(gameData)
   } else {

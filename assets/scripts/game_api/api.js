@@ -3,16 +3,14 @@ const app = require('../app.js')
 const config = require('../config.js')
 
 // AJAX POST for new game
-const createGame = function (data) {
+const createGame = function () {
   console.log(app.user.token)
-  console.log(data)
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    },
-    data: data
+    }
   })
 }
 
