@@ -192,16 +192,6 @@ const checkForWin = function () {
 }
 
 // function to reset the game when the button is clicked
-const resetGame = function () {
-  console.log('game reset')
-  $('.game.cell').html('')
-  moveCounter = 0
-  turn = 'Xavier'
-  $('.game.cell').on('click', function () {
-    onPlaceMarker(this.id)
-  })
-  $('.game-history').hide()
-}
 
 module.exports = {
   turn,
