@@ -25,6 +25,9 @@ const signInSuccess = (data) => {
   $('#change-pw').show()
   $('.start').show()
   $('#game-history-btn').show()
+  if (localStorage.getItem('game')) {
+    $('#restore-game-btn').show()
+  }
 }
 
 const signInFail = () => {
