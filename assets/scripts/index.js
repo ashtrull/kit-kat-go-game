@@ -2,7 +2,6 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const gameEvents = require('./game/events.js')
 const boardEvents = require('./game/turn.js')
 const authEvents = require('./auth/events.js')
 const apiEvents = require('./game_api/events.js')
@@ -23,13 +22,12 @@ $(() => {
     $('#game-history-btn').hide()
     $('#hide-game-history-btn').hide()
     $('#save-game-btn').hide()
+    $('#restore-game-btn').hide()
   })
   $('.new-game').on('submit', apiEvents.onNewGame)
   $('.new-game').on('submit', function () {
-    console.log('start button clicked')
-    $('#grid-container').show()
+    console.log('Start button clicked')
     boardEvents.resetGame()
-    $('#game-prompt').html('Xavier always starts!')
   })
 
   $('.game.cell').on('click', function () {
@@ -51,7 +49,7 @@ $(() => {
     $('#hide-game-history-btn').hide()
   })
   $('#save-game-btn').on('click', apiEvents.onSaveGame)
-  $(document).on('click', '#restore-game-btn', apiEvents.onRestoreGame)
+  $('#restore-game-btn').on('click', apiEvents.onRestoreGame)
 })
 
 // TODO Message " __ wins! " or "Game over. Play again?"
@@ -63,6 +61,7 @@ $(() => {
 // TODO Game stored in incomplete or complete stage
 
 module.exports = {
-  gameEvents,
-  boardEvents
+  authEvents,
+  boardEvents,
+  apiEvents
 }

@@ -4,6 +4,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
+const gameEvents = require('../game/turn.js')
 
 const onNewGame = function (event) {
   event.preventDefault()
@@ -43,14 +44,11 @@ const onRestoreGame = function (event) {
   const gameId = $(event.target).data('id')
   console.log('game id: ' + gameId)
   // api.restoreGame(gameId)
-  const gameData = JSON.parse(localStorage.getItem(gameId))
-  console.log(localStorage.getItem(gameId))
-  console.log(gameData)
-  if (localStorage.getItem(gameId)) {
-    ui.restoreGameSuccess(gameData)
-  } else {
-    ui.fail()
-  }
+  const gameData = JSON.parse(localStorage.getItem('game'))
+  console.log(localStorage.getItem('game'))
+  console.log('gameData: ' + gameData)
+  gameEvents.setCells(gameData)
+  ui.restoreGameSuccess(gameData)
 }
 
 module.exports = {

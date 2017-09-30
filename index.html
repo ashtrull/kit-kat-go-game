@@ -27,6 +27,7 @@
       <div class="content" id="game-start-content">
         <h3 id="game-prompt"> Ready to play? </h3>
         <form class="new-game" action="index.html" method="post">
+        <button id="restore-game-btn" data-id="" type="submit" class="btn btn-default" value="Restore Game">Restore Previous Game?</button>
         <button type="submit" class="btn btn-primary start" name="button">Start New Game</button>
         </form>
       </div>
@@ -63,14 +64,14 @@
             <thead>
               <th>Game Id</th>
               <th>Completed</th>
-              <th>Restore Game</th>
+              <!-- <th>Restore Game</th> -->
             </thead>
             <tbody>
               {{#games}}
               <tr>
                 <td>{{id}}</td>
                 <td>{{over}}</td>
-                <td><button id="restore-game-btn" data-id="{{id}}" type="submit" class="btn btn-default" value="Restore Game">Restore Game</button>
+                <!-- <td><button id="restore-game-btn" data-id="{{id}}" type="submit" class="btn btn-default" value="Restore Game">Restore Game</button> -->
               </tr>
         {{/games}}
     </tbody>

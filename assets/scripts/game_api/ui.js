@@ -2,13 +2,16 @@
 
 const Handlebars = require('handlebars')
 const app = require('../app.js')
-const gameTurn = require('../game/turn.js')
+const gameEvents = require('../game/turn.js')
 
 const createGameSuccess = (data) => {
   app.game = data.game
   console.log(data)
   console.log(app.game)
   $('#save-game-btn').show()
+  console.log('start button clicked')
+  $('#grid-container').show()
+  $('#game-prompt').html('Xavier always starts!')
 }
 
 const createGameFail = (error) => {
@@ -16,15 +19,15 @@ const createGameFail = (error) => {
 }
 
 const updateGameSuccess = (data) => {
-  app.game = data.game
   console.log('updateGameSuccess')
   console.log(data)
   console.log('Updated game')
   const game = data.game
   console.log('Saving to local storage')
   console.log(game)
-  localStorage.setItem(data.game.id, JSON.stringify(game))
-  localStorage.setItem('movecounter', JSON.stringify(gameTurn.moveCounter))
+  localStorage.game = JSON.stringify(game)
+  console.log(gameEvents.moveCounter)
+  localStorage.movecounter = JSON.stringify(gameEvents.moveCounter)
 }
 
 const updateGameFail = (error) => {
@@ -53,36 +56,43 @@ const gameHistorySuccess = (data) => {
 }
 
 const restoreGameSuccess = (data) => {
+  console.log('restoreGameSuccess data: ')
   console.log(data)
   app.game = data
-  console.log(app.game)
   $('#game-history-container').hide()
   $('#grid-container').show()
   $('.cell').html('')
-  // update the cells array with the values from game.cells
-  const cells = data.cells
 
-  // console.log(gameTurn.cells)
-  // $('#0').value = data.cells[0]
-  // $('#1').value = data.cells[1]
-  // $('#2').value = data.cells[2]
-  // $('#3').value = data.cells[3]
-  // $('#4').value = data.cells[4]
-  // $('#5').value = data.cells[5]
-  // $('#6').value = data.cells[6]
-  // $('#7').value = data.cells[7]
-  // $('#8').value = data.cells[8]
+  // update the cells array with the values from game.cells
+  const cells = [
+    data.cells[0],
+    data.cells[1],
+    data.cells[2],
+    data.cells[3],
+    data.cells[4],
+    data.cells[5],
+    data.cells[6],
+    data.cells[7],
+    data.cells[8]
+  ]
   // conditional if cell 0 === x, place xavier in inner html of '#0'
   // repeat for all 9 cells
-  // if # of turns %2 === 0 , it's Xavier's turns
-  // else it's Oliver's turn
-  cells.map(function (c) {
-    if (c.value === 'X') {
-      $('#' + c.index).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
-    } else if (c.value === 'O') {
-      $('#' + c.index).html("<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>")
+
+  cells.forEach(function (c, i, cells) {
+    if (cells[i] === 'X') {
+      $('#' + i).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
+    } else if (cells[i] === 'O') {
+      $('#' + i).html("<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>")
     }
   })
+
+  $('.game.cell').html('')
+  $('.game.cell').on('click', function () {
+    gameEvents.onPlaceMarker(this.id)
+  })
+  $('.game-history').hide()
+  // if # of turns %2 === 0 , it's Xavier's turns
+  // else it's Oliver's turn
 }
 
 const success = (data) => {
