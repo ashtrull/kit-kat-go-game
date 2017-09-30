@@ -25,7 +25,6 @@ const cells = [
   ''
 ]
 
-
 // function to reset the board when the start button is clicked
 const resetGame = function () {
   console.log('game reset')
