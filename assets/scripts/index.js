@@ -15,19 +15,21 @@ require('./example')
 $(() => {
   $(function () {
     $('#grid-container').hide()
-    $('.start').hide()
+    $('.new-game').hide()
     $('.user-logout').hide()
     $('#change-pw').hide()
     $('#game-history-container').hide()
     $('#game-history-btn').hide()
     $('#hide-game-history-btn').hide()
     $('#save-game-btn').hide()
-    $('#restore-game-btn').hide()
+    $('#game-start-content  ').hide()
   })
   $('.new-game').on('submit', apiEvents.onNewGame)
   $('.new-game').on('submit', function () {
-    console.log('Start button clicked')
+    console.log('start button clicked')
+    $('#grid-container').show()
     boardEvents.resetGame()
+    $('#game-prompt').html('Xavier always starts!')
   })
 
   $('.game.cell').on('click', function () {
@@ -49,7 +51,8 @@ $(() => {
     $('#hide-game-history-btn').hide()
   })
   $('#save-game-btn').on('click', apiEvents.onSaveGame)
-  $('#restore-game-btn').on('click', apiEvents.onRestoreGame)
+  $('#restore-game-btn').on('click', boardEvents.setCells)
+    .on('click', apiEvents.onRestoreGame)
 })
 
 // TODO Message " __ wins! " or "Game over. Play again?"
@@ -61,7 +64,5 @@ $(() => {
 // TODO Game stored in incomplete or complete stage
 
 module.exports = {
-  authEvents,
-  boardEvents,
-  apiEvents
+  boardEvents
 }
