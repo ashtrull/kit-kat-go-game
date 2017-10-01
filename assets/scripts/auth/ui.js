@@ -22,8 +22,9 @@ const signInSuccess = (data) => {
   $('.user-signup').hide()
   $('.user-login').hide()
   $('.user-logout').show()
+  $('#game-start-content').show()
+  $('.new-game').show()
   $('#change-pw').show()
-  $('.start').show()
   $('#game-history-btn').show()
   if (localStorage.getItem('game')) {
     $('#restore-game-btn').show()

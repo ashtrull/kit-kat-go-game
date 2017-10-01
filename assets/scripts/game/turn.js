@@ -5,6 +5,8 @@ const gameApi = require('../game_api/events.js')
 // turn counter
 let turn = 'Oliver'
 
+let cells = []
+
 // an array to set up the game board like this:
 //  0  |  1  |  2  |
 //  ---------------
@@ -12,31 +14,20 @@ let turn = 'Oliver'
 //  ---------------
 //  6  |  7  |  8  |
 
-const cells = [
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  ''
-]
-
 // function to reset the board when the start button is clicked
 const resetGame = function () {
   console.log('game reset')
   $('.game.cell').html('')
-  const cells = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+  cells = [
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    ''
   ]
   moveCounter = 0
   console.log('The cells are ' + cells)
@@ -49,21 +40,14 @@ const resetGame = function () {
 }
 
 // function to set the board when a game is restored
-const setCells = function (data) {
+const setCells = function () {
+  console.log(localStorage.getItem('game'))
+  const data = JSON.parse(localStorage.getItem('game'))
   console.log(data)
-  const cells = [
-    data.cells[0],
-    data.cells[1],
-    data.cells[2],
-    data.cells[3],
-    data.cells[4],
-    data.cells[5],
-    data.cells[6],
-    data.cells[7],
-    data.cells[8]
-  ]
-  console.log('The cells are ' + cells)
-  turn = 'Xavier'
+  cells = data.cells
+  turn = data.turn
+  console.log('setCells')
+  console.log(cells)
   return cells
 }
 
@@ -86,18 +70,14 @@ const onPlaceMarker = function (id) {
     cells[id] = 'X'
     console.log(cells)
     checkForWin()
-    index = id
-    value = cells[id]
-    gameApi.onNewMove(index, value, over)
+    gameApi.onNewMove(cells, over, turn)
   } else if (turn === 'Oliver' && cells[id] === '') {
     cells[id] = 'O'
     console.log('marked O')
     // after placing the marker, check for a win
     console.log(cells)
     checkForWin()
-    index = id
-    value = cells[id]
-    gameApi.onNewMove(index, value, over)
+    gameApi.onNewMove(cells, over, turn)
   }
   cells.forEach(function (c, i, cells) {
     if (cells[i] === 'X') {
@@ -114,6 +94,7 @@ const winFunc = function () {
   console.log(turn + ' wins!')
   $('#game-prompt').html(turn + ' wins! Game Over.')
   $('.game.cell').off()
+  $('.new-game').show()
   over = true
   localStorage.clear()
   if (turn === 'Xavier') {
@@ -136,6 +117,7 @@ const noWin = function () {
   // game over process if all cells are full:
   if (moveCounter >= 9) {
     $('#game-prompt').html('Cat\'s Game! Game Over.')
+    $('.new-game').show()
     over = true
     localStorage.clear()
     return over

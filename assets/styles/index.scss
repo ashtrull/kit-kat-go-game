@@ -4,8 +4,36 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 .container-fluid {
   background-color: white;
+  display: grid;
+  grid-gap: 10px;
+
+}
+
+@media screen and (min-width: 500px) {
+  .right.sidebar {
+    float: right;
+    width: 18%;
+  }
+  .left.sidebar {
+    float: left;
+    width: 18%;
+  }
+  .center.content {
+    float: left;
+    width: 60%
+  }
+  .container {
+    margin: 0 auto;
+    grid-template-columns: 1fr 3fr;
+  }
 }
 
 .header-bar {
@@ -87,4 +115,10 @@ tr {
 
 footer {
   clear: left;
+  text-align: center;
+  font-size: 16px;
+  background: $secondary-color1;
+  color: white;
+  font-family: $bodyfontfamily;
+  height: 60px;
 }

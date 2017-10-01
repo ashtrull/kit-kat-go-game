@@ -24,8 +24,8 @@ const index = function () {
   })
 }
 
-const updateGame = function (index, value, over) {
-  console.log(index, value, over)
+const updateGame = function (cells, over, turn) {
+  console.log(cells, turn, over)
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -34,10 +34,7 @@ const updateGame = function (index, value, over) {
     },
     data: {
       'game': {
-        'cell': {
-          'index': index,
-          'value': value
-        },
+        'cells': cells,
         'over': over
       }
     }

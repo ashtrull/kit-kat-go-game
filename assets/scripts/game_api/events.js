@@ -5,6 +5,7 @@ const ui = require('./ui.js')
 const app = require('../app.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const gameEvents = require('../game/turn.js')
+const store = require('../store.js')
 
 const onNewGame = function (event) {
   event.preventDefault()
@@ -14,14 +15,13 @@ const onNewGame = function (event) {
     .fail(ui.fail)
 }
 
-const onNewMove = function (index, value, over) {
+const onNewMove = function (cells, over, turn) {
   event.preventDefault()
-  console.log(index, value, over)
-  console.log('Adding new move')
-  api.updateGame(index, value, over)
-    .done(ui.updateGameSuccess)
+  console.log('onNewMove')
+  console.log(cells, over, turn)
+  api.updateGame(cells, over, turn)
+    .done(ui.updateGameSuccess(cells, over, turn))
     .fail(ui.fail)
-  console.log(index, value, over)
 }
 
 const onGameHistory = function (event) {
@@ -40,15 +40,14 @@ const onSaveGame = function (event) {
 const onRestoreGame = function (event) {
   event.preventDefault()
   console.log('onRestoreGame')
-  console.log(event.target)
-  const gameId = $(event.target).data('id')
-  console.log('game id: ' + gameId)
   // api.restoreGame(gameId)
   const gameData = JSON.parse(localStorage.getItem('game'))
-  console.log(localStorage.getItem('game'))
-  console.log('gameData: ' + gameData)
-  gameEvents.setCells(gameData)
-  ui.restoreGameSuccess(gameData)
+  console.log(gameData)
+  if (gameData.over === true) {
+    ui.restoreGameFail()
+  } else {
+    ui.restoreGameSuccess(gameData)
+  }
 }
 
 module.exports = {
