@@ -41,18 +41,10 @@ const onChangePassword = function (event) {
     .fail(ui.changePasswordFail)
 }
 
-const addHandlers = () => {
-//  $('.user-signup').on('submit', authEvents.onSignUp)
-//  $('.user-login').on('submit', authEvents.onSignIn)
-//  $('#change-pw').on('click', authEvents.onChangePassword)
-//  $('#sign-out').on('submit', authEvents.onSignOut)
-}
-
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
-  addHandlers,
   app
 }
