@@ -65,6 +65,8 @@ const restoreGameSuccess = (gameData) => {
   $('#game-history-container').hide()
   $('#grid-container').show()
   $('.cell').html('')
+  $('.user-logout').disabled = false
+
   // $('.game.cell').on('click', function () {
   //   gameEvents.onPlaceMarker(this.id)
   // })
