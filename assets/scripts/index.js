@@ -13,7 +13,7 @@ $(() => {
 require('./example')
 
 $(() => {
-  $(function () {
+  $(function() {
     $('#grid-container').hide()
     $('.new-game').hide()
     $('.user-logout').hide()
@@ -24,15 +24,8 @@ $(() => {
     $('#save-game-btn').hide()
     $('#game-start-content  ').hide()
   })
-  $('.new-game').on('submit', apiEvents.onNewGame)
-  $('.new-game').on('submit', function () {
-    console.log('start button clicked')
-    $('#grid-container').show()
-    boardEvents.resetGame()
-    $('#game-prompt').html('Xavier always starts!')
-  })
 
-  $('.game.cell').on('click', function () {
+  $('.game.cell').on('click', function() {
     boardEvents.onPlaceMarker(this.id)
   })
   // $('.start').on('click', function () {
@@ -53,6 +46,12 @@ $(() => {
   $('#save-game-btn').on('click', apiEvents.onSaveGame)
   $('#restore-game-btn').on('click', boardEvents.setCells)
     .on('click', apiEvents.onRestoreGame)
+  $('.new-game').on('submit', apiEvents.onNewGame)
+    .on('submit', function () {
+      $('#grid-container').show()
+      boardEvents.resetGame()
+      $('#game-prompt').html('Xavier always starts!')
+    })
 })
 
 // TODO Message " __ wins! " or "Game over. Play again?"

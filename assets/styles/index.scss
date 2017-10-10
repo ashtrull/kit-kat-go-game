@@ -32,8 +32,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   }
   .container {
     margin: 0 auto;
-    grid-template-columns: 1fr 3fr;
   }
+}
+
+div.container {
+  max-width: 370px;
 }
 
 .header-bar {
@@ -78,6 +81,7 @@ h4 {
 
 .sidebar {
   width: 180px;
+  z-index: 1000;
 }
 
 form {
