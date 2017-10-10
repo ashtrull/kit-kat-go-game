@@ -2,7 +2,6 @@
 
 const Handlebars = require('handlebars')
 const app = require('../app.js')
-const gameEvents = require('../game/turn.js')
 
 const createGameSuccess = (data) => {
   app.game = data.game

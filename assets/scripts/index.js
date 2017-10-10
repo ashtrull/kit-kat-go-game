@@ -13,7 +13,7 @@ $(() => {
 require('./example')
 
 $(() => {
-  $(function() {
+  $(function () {
     $('#grid-container').hide()
     $('.new-game').hide()
     $('.user-logout').hide()
@@ -25,7 +25,7 @@ $(() => {
     $('#game-start-content  ').hide()
   })
 
-  $('.game.cell').on('click', function() {
+  $('.game.cell').on('click', function () {
     boardEvents.onPlaceMarker(this.id)
   })
   // $('.start').on('click', function () {
