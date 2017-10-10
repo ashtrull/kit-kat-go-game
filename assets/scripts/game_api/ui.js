@@ -7,7 +7,6 @@ const gameEvents = require('../game/turn.js')
 const createGameSuccess = (data) => {
   app.game = data.game
   console.log(data)
-  $('#save-game-btn').show()
   console.log('start button clicked')
   $('#grid-container').show()
   $('#game-prompt').html('Xavier always starts!')
