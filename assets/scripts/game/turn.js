@@ -1,6 +1,7 @@
 'use strict'
 const boardEvents = require('../index.js')
 const gameApi = require('../game_api/events.js')
+const app = require('../app.js')
 
 // turn counter
 let turn = 'Oliver'
@@ -64,6 +65,8 @@ let over
 
 // function to put the cat marker in the cell clicked:
 const onPlaceMarker = function (id) {
+  const cells = app.game.cells
+  console.log(app.game)
   console.log('onPlaceMarker')
   // checks who's turn it is and if the cell is empty to place the marker:
   if (turn === 'Xavier' && cells[id] === '') {
@@ -72,6 +75,7 @@ const onPlaceMarker = function (id) {
     checkForWin()
     gameApi.onNewMove(cells, over, turn)
   } else if (turn === 'Oliver' && cells[id] === '') {
+  } else if (turn === 'Oliver' && cells[id] === 0) {
     cells[id] = 'O'
     console.log('marked O')
     // after placing the marker, check for a win
@@ -79,6 +83,7 @@ const onPlaceMarker = function (id) {
     checkForWin()
     gameApi.onNewMove(cells, over, turn)
   }
+
   cells.forEach(function (c, i, cells) {
     if (cells[i] === 'X') {
       $('#' + i).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
@@ -139,6 +144,7 @@ const noWin = function () {
 }
 
 const checkForWin = function () {
+  const cells = app.game.cells
   // checks for horizontal win:
   console.log('checkForWin')
   if (cells[0] !== '' && cells[0] === cells[1] && cells[0] === cells[2]) {
@@ -165,6 +171,8 @@ const checkForWin = function () {
     noWin()
   }
 }
+
+// function to reset the game when the button is clicked
 
 module.exports = {
   turn,
