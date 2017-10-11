@@ -47,6 +47,7 @@ const signOutSuccess = (data) => {
   $('#sign-in-prompt').text('Sign in to play!')
   $('.user-login').show()
   $('.user-signup').show()
+  $('.user-logout').hide()
   $('#game-history-container').hide()
   $('#grid-container').hide()
   $('#game-start-content').hide()
