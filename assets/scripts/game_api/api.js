@@ -4,7 +4,6 @@ const config = require('../config.js')
 
 // AJAX POST for new game
 const createGame = function () {
-  console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -25,7 +24,6 @@ const index = function () {
 }
 
 const updateGame = function (cells, over, turn) {
-  console.log(cells, turn, over)
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -51,17 +49,6 @@ const gameHistory = function (data) {
   })
 }
 
-// const joinGame = function (data) {
-//   return $.ajax({
-//     url: app.host + '/games/' + data.game.id,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token' + app.user.token
-//     },
-//     data: data
-//   })
-// }
-
 const showGame = function (id) {
   return $.ajax({
     url: app.host + '/games/' + id,
@@ -73,8 +60,6 @@ const showGame = function (id) {
 }
 
 const restoreGame = function (gameId) {
-  console.log(gameId)
-  console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games/' + gameId,
     method: 'GET',
