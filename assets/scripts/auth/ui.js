@@ -28,7 +28,7 @@ const signInSuccess = (data) => {
   $('.new-game').show()
   $('#change-pw').show()
   $('#game-history-btn').show()
-  $('.user-login')[0].reset()
+  $('#user-login')[0].reset()
   if (localStorage.getItem('game')) {
     $('#restore-game-btn').show()
   }
@@ -37,7 +37,7 @@ const signInSuccess = (data) => {
 const signInFail = () => {
   console.log('Email/password combination not found')
   $('#sign-in-prompt').text('Email/password combination not found')
-  $('.user-login')[0].reset()
+  $('#user-login')[0].reset()
 }
 
 const signOutSuccess = (data) => {
@@ -54,7 +54,7 @@ const signOutSuccess = (data) => {
   $('#game-history-btn').hide()
   $('#change-pw').hide()
   $('#save-game-btn').hide()
-  $('.user-login')[0].reset()
+  $('#user-login')[0].reset()
 }
 
 const changePasswordSuccess = (data) => {
