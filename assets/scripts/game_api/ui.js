@@ -78,9 +78,9 @@ const restoreGameSuccess = (gameData) => {
   // repeat for all 9 cells
   cells.forEach(function (c, i, cells) {
     if (cells[i] === 'X') {
-      $('#' + i).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
+      $('#' + i).html("<img src='https://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")
     } else if (cells[i] === 'O') {
-      $('#' + i).html("<img src='http://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>")
+      $('#' + i).html("<img src='https://i.imgur.com/GUESkN4.png' title='source: imgur.com' alt='Oliver the kitten' style='width:80px; height:80px'>")
     }
   })
   $('.game-history').hide()
