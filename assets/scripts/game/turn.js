@@ -75,7 +75,6 @@ const onPlaceMarker = function (id) {
     checkForWin()
     gameApi.onNewMove(cells, over, turn)
   } else if (turn === 'Oliver' && cells[id] === '') {
-  } else if (turn === 'Oliver' && cells[id] === 0) {
     cells[id] = 'O'
     console.log('marked O')
     // after placing the marker, check for a win
