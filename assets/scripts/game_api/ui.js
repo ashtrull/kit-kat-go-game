@@ -21,11 +21,9 @@ const createGameFail = (error) => {
 
 const updateGameSuccess = (cells, over, turn) => {
   console.log('updateGameSuccess')
-  console.log(cells, over, turn)
   console.log('Updated game')
   const game = app.game
   console.log('Saving to local storage')
-  console.log(game)
   game.cells = cells
   game.over = over
   game.turn = turn
