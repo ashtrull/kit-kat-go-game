@@ -20,7 +20,7 @@ const updateGameSuccess = (cells, over, turn, moveCounter) => {
   const game = app.game
   game.cells = cells
   game.over = over
-  game.turn = urn
+  game.turn = turn
   game.moveCounter = moveCounter
   localStorage.game = JSON.stringify(game)
 }
