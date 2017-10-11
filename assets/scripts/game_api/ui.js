@@ -19,7 +19,7 @@ const createGameFail = (error) => {
   console.error(error)
 }
 
-const updateGameSuccess = (cells, over, turn) => {
+const updateGameSuccess = (cells, over, turn, moveCounter) => {
   console.log('updateGameSuccess')
   console.log('Updated game')
   const game = app.game
@@ -27,6 +27,7 @@ const updateGameSuccess = (cells, over, turn) => {
   game.cells = cells
   game.over = over
   game.turn = turn
+  game.moveCounter = moveCounter
   localStorage.game = JSON.stringify(game)
 }
 
@@ -62,7 +63,6 @@ const restoreGameSuccess = (gameData) => {
   $('#game-history-container').hide()
   $('#grid-container').show()
   $('.cell').html('')
-  $('.user-logout').disabled = false
 
   // $('.game.cell').on('click', function () {
   //   gameEvents.onPlaceMarker(this.id)

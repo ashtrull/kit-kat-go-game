@@ -47,8 +47,10 @@ const setCells = function () {
   console.log(data)
   cells = data.cells
   turn = data.turn
+  moveCounter = data.moveCounter
   console.log('setCells')
   console.log(cells)
+  console.log(moveCounter)
   return cells
 }
 
@@ -73,14 +75,14 @@ const onPlaceMarker = function (id) {
     cells[id] = 'X'
     console.log(cells)
     checkForWin()
-    gameApi.onNewMove(cells, over, turn)
+    gameApi.onNewMove(cells, over, turn, moveCounter)
   } else if (turn === 'Oliver' && cells[id] === '') {
     cells[id] = 'O'
     console.log('marked O')
     // after placing the marker, check for a win
     console.log(cells)
     checkForWin()
-    gameApi.onNewMove(cells, over, turn)
+    gameApi.onNewMove(cells, over, turn, moveCounter)
   }
 
   cells.forEach(function (c, i, cells) {
@@ -117,6 +119,7 @@ const winFunc = function () {
 const noWin = function () {
   console.log('noWin')
   moveCounter += 1
+  console.log(moveCounter)
   console.log('Move count is ' + moveCounter)
   // game over process if all cells are full:
   if (moveCounter >= 9) {
