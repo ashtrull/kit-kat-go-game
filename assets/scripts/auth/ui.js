@@ -54,6 +54,7 @@ const signOutSuccess = (data) => {
   $('#game-history-btn').hide()
   $('#change-pw').hide()
   $('#save-game-btn').hide()
+  $('.user-login')[0].reset()
 }
 
 const changePasswordSuccess = (data) => {
