@@ -5,10 +5,7 @@ const app = require('../app.js')
 
 const createGameSuccess = (data) => {
   app.game = data.game
-  console.log(data)
-  console.log(app.game)
   $('#save-game-btn').show()
-  console.log('start button clicked')
   $('#grid-container').show()
   $('#game-prompt').html('Xavier always starts!')
   $('#restore-game-btn').hide()
@@ -20,13 +17,10 @@ const createGameFail = (error) => {
 }
 
 const updateGameSuccess = (cells, over, turn, moveCounter) => {
-  console.log('updateGameSuccess')
-  console.log('Updated game')
   const game = app.game
-  console.log('Saving to local storage')
   game.cells = cells
   game.over = over
-  game.turn = turn
+  game.turn = urn
   game.moveCounter = moveCounter
   localStorage.game = JSON.stringify(game)
 }
@@ -58,8 +52,6 @@ const gameHistorySuccess = (data) => {
 
 const restoreGameSuccess = (gameData) => {
   app.game = gameData
-  console.log('restoreGameSuccess data: ')
-  console.log(gameData)
   $('#game-history-container').hide()
   $('#grid-container').show()
   $('.cell').html('')
@@ -68,7 +60,6 @@ const restoreGameSuccess = (gameData) => {
   //   gameEvents.onPlaceMarker(this.id)
   // })
   const data = gameData
-  console.log(data)
   const turn = gameData.turn
 
   // update the cells array with the values from game.cells
@@ -85,7 +76,6 @@ const restoreGameSuccess = (gameData) => {
   ]
   // conditional if cell 0 === x, place xavier in inner html of '#0'
   // repeat for all 9 cells
-  console.log(cells)
   cells.forEach(function (c, i, cells) {
     if (cells[i] === 'X') {
       $('#' + i).html("<img src='http://i.imgur.com/aqGAGvW.png' title='source: imgur.com' alt='Xavier the kitten' style='width:80px; height:80px'>")

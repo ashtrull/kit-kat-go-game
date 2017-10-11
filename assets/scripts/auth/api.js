@@ -4,7 +4,6 @@ const config = require('../config.js')
 
 // AJAX POST for new account
 const signUp = function (data) {
-  console.log(data)
   return $.ajax({
     url: app.host + '/sign-up',
     headers: {'header': 'Content-Type: application/json'},
@@ -20,7 +19,6 @@ const signUp = function (data) {
 }
 // AJAX POST log in for existing account
 const signIn = function (data) {
-  console.log(data)
   return $.ajax({
     url: app.host + '/sign-in',
     method: 'POST',
@@ -34,7 +32,6 @@ const signIn = function (data) {
 }
 
 const signOut = (data) => {
-  console.log(data)
   return $.ajax({
     url: app.host + '/sign-out/' + app.user.id,
     method: 'DELETE',
@@ -45,7 +42,6 @@ const signOut = (data) => {
 }
 
 const changePassword = function (data) {
-  console.log(app.user.token)
   return $.ajax({
     url: app.host + '/change-password/' + app.user.id,
     method: 'PATCH',
@@ -60,10 +56,6 @@ const changePassword = function (data) {
     }
   })
 }
-
-// TODO const createGame
-
-// TODO const updateMoves
 
 const showGames = function (data) {
   return $.ajax({

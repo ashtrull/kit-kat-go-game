@@ -54,14 +54,6 @@ $(() => {
     })
 })
 
-// TODO Message " __ wins! " or "Game over. Play again?"
-
-// TODO If win, add 1 point to the game winner's score
-
-// TODO Players can search for an existing game to continue
-
-// TODO Game stored in incomplete or complete stage
-
 module.exports = {
   boardEvents
 }
